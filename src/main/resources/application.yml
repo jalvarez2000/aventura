@@ -1,0 +1,14 @@
+rabbitMq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  exchange: aventura.exchange
+  queue: aventura.queue
+  routing-key: aventure.routingkey
+spring:
+  cloud:
+    gcp:
+      project-id: aventura-db
+      credentials:
+        location: classpath:aventura-db-eacbf8e020bc.json

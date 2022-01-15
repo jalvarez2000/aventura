@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "aventura-db",
+  "private_key_id": "eacbf8e020bc2b3c4b8feb7b0748451d9b95c864",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDrBT0NSWDHn2k4\n4mdQkBYyFfaOqrNxTWazfIY+lMpJTWNbZd1DIlsFYjFthWMoKYQM6539EkiKzbTB\nmEEmTBlMrmbr/yT3/TYycOdAJjo4mXR2oSEoMrFS1Lmq22KmMHiMVYmc4FXviqyh\nTp15J4SRrZx/DrIa1KFd0u7jWl72TfdxKeCAsPZPKAigShKwdFbsnsOBFXJPn3Jt\nnCIk5F1dVZI1WaBqYBC+7fU163ODRbgTDEV0V8iqdx5iP+glTxokvZbgK9vdXUgn\n4lbRALPkYN4OVY8nuOnCesWIT8Ek8MtSWRxj+TUEtRhGlMsN1W2pPhZHwKdM2RLy\nsyBHKsFzAgMBAAECggEAA75OSKPCs0Th0AoBi4l9264a8YZDD0zxPn+ydl2E4B/j\nkR3Ix4CRQLazAx1N/HwLu97RJlTGfOPDw9Ir0AQ3FZzsur/4sdbF/dIWSalJroPG\naeqktLDwadl4wooxoHVcYvyj70pHMgAYIBb0VqA26Yy0op/aw/yBb53OwIzWNqXS\nY0o9ZmX3y830c3QrP89Jm9bZqgljilK9+0VTD7TCwwU8rebs3cvkD1CpHCPo4KjU\nT9qTuK1bcjFWArrJ84mzbJl92/Q0475PcH9ljIz5yNSuxbRRCbdb2aPXhiv77FsQ\njrXz4EHGtfP7X2xQTnT2thjitHcEFGrqK6FskUu5UQKBgQD4eX+xJVgQzLZDSoie\nhCVruNYRnuA53o5TTNg6pxKtkvKEiBzakZQG6Ck0TD3Bd83osPU8tIE90gF82wN1\nN4kn49h1LEZv+bIh0Ez/rXd/FWRvvuuPBCPVyEj2BQ/0aWc8jeAfKudifB37XNKc\nIs1yjDPRcpvz5KIbCrfBL7b/pwKBgQDyI2zvJKIo7Nep2XIeBEBQbGdwboW7HKJk\nxghLXOb1AKJ/Ysfhwh1MP8BuYWaetf/cbQ4Uq9LI0oM/zsgR5XR0F7s62nb8h2zD\nr/4QSwnTvXnD4vI9DJAmE5Q+QrlZ4D6umx05CxUEujiMqRduKkDzRGCxD9dMtTSq\ngT5B8Z0JVQKBgQDvpfejenoi0d6krjlwcdHJwN8u5YYsKlwpOX9/qm5YXNdtPf5e\nTHRx6O780t/pPkyptisBXrMcVfU7X91I68RsZdP6xzY0f6bv+ACbxMnxF0fkg0ac\njIing2HjbuSBfjuk6s2UIgRDN6SPMGqtTt/KMDE2PIzvwb8bx82NFSEyFwKBgQCN\nxqpQ9+0u80ZvgA9ufeS+ckq6rSwGXATF5qISpmngyKdc2RTaHhOTgryEpOk2QrB2\nezBEcDryNTh+UvAYcnaWRxLsqeADirPnfJPRLG6rmQTD6o0Vq9Z3RP2G2wC2HDP3\nfoFE1jVPWE4mJhe+/GSdS8slwXW5x1v3/cbbS8I8JQKBgQDgYZMdWbuDcE8zJq3j\nMu3ePPK74kbz5z1gRdLRteTWfp9DCUmogsX/l/apIz1YCO8DoPy9s4wK7SriEdIh\n+fY7rLoH/Lydvr7yr9/k9GH7DAEmO8bxfXQ9U4gUEF/2S5P2vLaKVyok5nAx1120\niVlOK2jsd8hajsXqSK/ql5gnKQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "aventura-db@appspot.gserviceaccount.com",
+  "client_id": "102653838555819051678",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/aventura-db%40appspot.gserviceaccount.com"
+}
