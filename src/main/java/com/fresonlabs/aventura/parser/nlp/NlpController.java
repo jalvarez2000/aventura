@@ -2,7 +2,6 @@ package com.fresonlabs.aventura.parser.nlp;
 
 
 import com.fresonlabs.aventura.game.gamecommand.GameCommandModel;
-import com.fresonlabs.aventura.game.gamecommand.GameCommandPublisher;
 import com.fresonlabs.aventura.game.gamerule.GameRule;
 import com.fresonlabs.aventura.game.gamerule.GameRuleFactory;
 import com.fresonlabs.aventura.parser.lemma.LemmaService;
@@ -22,7 +21,7 @@ public class NlpController {
     private LemmaService lemmaService;
     private GameRuleFactory gameRuleFactory;
 
-    NlpController(NlpPipeline pipeline, LemmaService lemmaService, GameCommandPublisher publisher, GameRuleFactory gameRuleFactory) {
+    NlpController(NlpPipeline pipeline, LemmaService lemmaService, GameRuleFactory gameRuleFactory) {
         this.pipeline = pipeline;
         this.lemmaService = lemmaService;
         this.gameRuleFactory = gameRuleFactory;

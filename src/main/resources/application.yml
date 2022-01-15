@@ -1,11 +1,3 @@
-rabbitMq:
-  host: localhost
-  port: 5672
-  username: guest
-  password: guest
-  exchange: aventura.exchange
-  queue: aventura.queue
-  routing-key: aventure.routingkey
 spring:
   cloud:
     gcp:

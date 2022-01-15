@@ -9,7 +9,6 @@ import org.springframework.data.annotation.Id;
 public class GameLocationModel {
     @Id
     String id;
-
     String description;
     String name;
 }
