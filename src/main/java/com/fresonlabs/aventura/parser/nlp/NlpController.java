@@ -1,9 +1,10 @@
 package com.fresonlabs.aventura.parser.nlp;
 
 
-import com.fresonlabs.aventura.game.gamecommand.GameCommandModel;
-import com.fresonlabs.aventura.game.gamerule.GameRule;
-import com.fresonlabs.aventura.game.gamerule.GameRuleFactory;
+import com.fresonlabs.aventura.domain.gamerequest.GameRequestModel;
+import com.fresonlabs.aventura.domain.gamerequest.GameCommandModel;
+import com.fresonlabs.aventura.domain.rule.Rule;
+import com.fresonlabs.aventura.domain.rule.RuleFactory;
 import com.fresonlabs.aventura.parser.lemma.LemmaService;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -19,12 +20,12 @@ import java.util.List;
 public class NlpController {
     private NlpPipeline pipeline;
     private LemmaService lemmaService;
-    private GameRuleFactory gameRuleFactory;
+    private RuleFactory ruleFactory;
 
-    NlpController(NlpPipeline pipeline, LemmaService lemmaService, GameRuleFactory gameRuleFactory) {
+    NlpController(NlpPipeline pipeline, LemmaService lemmaService, RuleFactory ruleFactory) {
         this.pipeline = pipeline;
         this.lemmaService = lemmaService;
-        this.gameRuleFactory = gameRuleFactory;
+        this.ruleFactory = ruleFactory;
     }
 
     @GetMapping("process")
@@ -38,12 +39,17 @@ public class NlpController {
             GameCommandModel gameCommand = GameCommandModel.builder()
                     .noun(this.getCommandItem(tokens,"NOUN"))
                     .verb(this.getCommandItem(tokens,"VERB"))
-                    .player("N8REpJ21y86Kvyuel2xW")
+                    .build();
+            GameRequestModel gameAppRequest = GameRequestModel.builder()
+                    .playerId(nlpText.getPlayerId())
+                    .gameId(nlpText.gameId)
+                    .gameCommand(gameCommand)
                     .build();
 
+
             if (gameCommand.getVerb().isEmpty() == false && gameCommand.getNoun().isEmpty() == false)  {
-                GameRule gameRule = this.gameRuleFactory.createGameRule(gameCommand);
-                response = gameRule.execute();
+                Rule rule = this.ruleFactory.createGameRule(gameAppRequest);
+                response = rule.execute();
             }
         }
         return NlpResponseModel.builder()

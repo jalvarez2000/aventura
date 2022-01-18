@@ -1,6 +1,7 @@
-package com.fresonlabs.aventura.game.gameplayer;
+package com.fresonlabs.aventura.domain.player;
 
-import com.fresonlabs.aventura.game.gamelocation.GameLocationModel;
+import com.fresonlabs.aventura.domain.location.LocationModel;
+import com.google.cloud.datastore.Key;
 import lombok.Data;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
 import org.springframework.data.annotation.Id;
@@ -8,10 +9,10 @@ import org.springframework.data.annotation.Reference;
 
 @Data
 @Entity(name="players")
-public class GamePlayerModel {
+public class PlayerModel {
     @Id
-    String id;
+    Key __key__;
     String name;
     @Reference
-    GameLocationModel location;
+    LocationModel  location;
 }

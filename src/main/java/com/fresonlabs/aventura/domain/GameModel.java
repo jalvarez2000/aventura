@@ -1,7 +1,7 @@
-package com.fresonlabs.aventura.game;
+package com.fresonlabs.aventura.domain;
 
-import com.fresonlabs.aventura.game.gamelocation.GameLocationModel;
-import com.fresonlabs.aventura.game.gameplayer.GamePlayerModel;
+import com.fresonlabs.aventura.domain.location.LocationModel;
+import com.fresonlabs.aventura.domain.player.PlayerModel;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Descendants;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
 import org.springframework.data.annotation.Id;
@@ -14,11 +14,11 @@ public class GameModel {
     String id;
 
     @Descendants
-    List<GameLocationModel> locations;
+    List<LocationModel> locations;
     @Descendants
-    List<GamePlayerModel> players;
+    List<PlayerModel> players;
 
-    GameModel(List<GameLocationModel> locations, List<GamePlayerModel> players) {
+    GameModel(List<LocationModel> locations, List<PlayerModel> players) {
         this.locations = locations;
         this.players = players;
     }

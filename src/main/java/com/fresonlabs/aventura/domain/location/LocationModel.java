@@ -1,14 +1,15 @@
-package com.fresonlabs.aventura.game.gamelocation;
+package com.fresonlabs.aventura.domain.location;
 
+import com.google.cloud.datastore.Key;
 import lombok.Data;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
 import org.springframework.data.annotation.Id;
 
 @Data
 @Entity(name="locations")
-public class GameLocationModel {
+public class LocationModel {
     @Id
-    String id;
+    Key __key__;
     String description;
     String name;
 }
