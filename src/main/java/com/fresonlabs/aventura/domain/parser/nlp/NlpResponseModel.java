@@ -1,4 +1,4 @@
-package com.fresonlabs.aventura.parser.nlp;
+package com.fresonlabs.aventura.domain.parser.nlp;
 
 import lombok.Builder;
 import lombok.Data;

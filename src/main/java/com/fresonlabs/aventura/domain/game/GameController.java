@@ -1,4 +1,4 @@
-package com.fresonlabs.aventura.domain;
+package com.fresonlabs.aventura.domain.game;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +16,6 @@ public class GameController {
 
     @GetMapping("")
     public void getAllGames() {
-        //this.gameService.getAllGames();
+        this.gameService.getAllGames();
     }
 }

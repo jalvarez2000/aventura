@@ -1,4 +1,4 @@
-package com.fresonlabs.aventura.parser.lemma;
+package com.fresonlabs.aventura.domain.parser.lemma;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;

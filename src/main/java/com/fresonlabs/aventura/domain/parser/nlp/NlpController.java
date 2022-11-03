@@ -1,14 +1,15 @@
-package com.fresonlabs.aventura.parser.nlp;
+package com.fresonlabs.aventura.domain.parser.nlp;
 
 
+import com.fresonlabs.aventura.authorization.TokenValidator;
 import com.fresonlabs.aventura.domain.gamerequest.GameRequestModel;
 import com.fresonlabs.aventura.domain.gamerequest.GameCommandModel;
-import com.fresonlabs.aventura.domain.rule.Rule;
-import com.fresonlabs.aventura.domain.rule.RuleFactory;
-import com.fresonlabs.aventura.parser.lemma.LemmaService;
+import com.fresonlabs.aventura.domain.parser.lemma.LemmaService;
+import com.fresonlabs.aventura.domain.command.Command;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.util.CoreMap;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +21,14 @@ import java.util.List;
 public class NlpController {
     private NlpPipeline pipeline;
     private LemmaService lemmaService;
-    private RuleFactory ruleFactory;
+    private TokenValidator tokenValidator;
 
-    NlpController(NlpPipeline pipeline, LemmaService lemmaService, RuleFactory ruleFactory) {
+    private ApplicationEventPublisher publisher;
+
+    NlpController(NlpPipeline pipeline, LemmaService lemmaService, ApplicationEventPublisher publisher) {
         this.pipeline = pipeline;
         this.lemmaService = lemmaService;
-        this.ruleFactory = ruleFactory;
+        this.publisher = publisher;
     }
 
     @GetMapping("process")
@@ -34,6 +37,7 @@ public class NlpController {
         String response ="No te entiendo.";
         Annotation document = new Annotation(nlpText.getInputText());
         List<CoreMap> sequences = pipeline.annotateAndSplitSequences(document);
+        //this.tokenValidator.verifyToken(nlpText.getPlayerId());
         for (CoreMap sequence : sequences) {
             List<CoreLabel> tokens = pipeline.splitTokens(sequence);
             GameCommandModel gameCommand = GameCommandModel.builder()
@@ -47,9 +51,9 @@ public class NlpController {
                     .build();
 
 
-            if (gameCommand.getVerb().isEmpty() == false && gameCommand.getNoun().isEmpty() == false)  {
-                Rule rule = this.ruleFactory.createGameRule(gameAppRequest);
-                response = rule.execute();
+            if (!gameCommand.getVerb().isEmpty() && !gameCommand.getNoun().isEmpty())  {
+                this.publisher.publishEvent(gameAppRequest);
+                response = "OK...";
             }
         }
         return NlpResponseModel.builder()

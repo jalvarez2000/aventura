@@ -1,4 +1,4 @@
-package com.fresonlabs.aventura.parser.lemma;
+package com.fresonlabs.aventura.domain.parser.lemma;
 
 import lombok.Getter;
 import lombok.Setter;

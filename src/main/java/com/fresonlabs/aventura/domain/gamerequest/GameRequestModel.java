@@ -6,7 +6,7 @@ import lombok.extern.jackson.Jacksonized;
 
 @Jacksonized @Builder
 @Data
-public class GameRequestModel {
+public class  GameRequestModel {
     String playerId;
     String gameId;
     GameCommandModel gameCommand;

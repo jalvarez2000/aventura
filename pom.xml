@@ -16,18 +16,18 @@
     <name>demo</name>
     <description>API Consumer</description>
     <properties>
-        <hibernate-validator.version>5.3.6.Final</hibernate-validator.version>
-        <jackson-annotations.version>2.12.4</jackson-annotations.version>
-        <jackson-core.version>2.12.4</jackson-core.version>
+        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <jackson-annotations.version>2.13.4</jackson-annotations.version>
+        <jackson-core.version>2.13.4</jackson-core.version>
         <jackson-databind.version>2.12.4</jackson-databind.version>
-        <java.version>16</java.version>
-        <lombok.version>1.18.20</lombok.version>
+        <java.version>17</java.version>
+        <lombok.version>1.18.24</lombok.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
-            <version>4.3.2</version>
+            <version>4.5.1</version>
         </dependency>
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
@@ -52,29 +52,9 @@
             <version>${jackson-core.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -98,7 +78,7 @@
         <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
-            <version>6.12.2</version>
+            <version>9.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -106,9 +86,14 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
+            <groupId>com.google.cloud</groupId>
             <artifactId>spring-cloud-gcp-starter-data-datastore</artifactId>
-            <version>1.2.8.RELEASE</version>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.21.9</version>
         </dependency>
     </dependencies>
 

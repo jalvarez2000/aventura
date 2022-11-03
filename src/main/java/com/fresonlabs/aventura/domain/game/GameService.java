@@ -1,13 +1,11 @@
-package com.fresonlabs.aventura.domain;
+package com.fresonlabs.aventura.domain.game;
 
-import com.fresonlabs.aventura.domain.gamerequest.GameRequestModel;
 import com.fresonlabs.aventura.domain.player.PlayerModel;
 import com.fresonlabs.aventura.domain.player.PlayerService;
-import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
-import org.springframework.data.annotation.Id;
+import com.google.cloud.datastore.Key;
+import com.google.cloud.spring.data.datastore.core.mapping.Entity;
 import org.springframework.stereotype.Component;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -19,23 +17,21 @@ public class GameService {
     GameService(GameRepository gameRepository, PlayerService playerService) {
         this.gameRepository = gameRepository;
         this.playerService = playerService;
-        ;
     }
 
-    public Optional<GameModel> getGame(String gameId) {
-        return this.gameRepository.findById(gameId);
+    public Optional<GameModel> getGame(Key gameId) {
+        return this.gameRepository.findById(gameId.toString());
     }
 
     public Collection<GameModel> getAllGames() {
         return this.gameRepository.getAllGames();
     }
 
-    public Iterable<PlayerModel> getPlayers() {
-        Iterable<PlayerModel> players =  this.playerService.getGamePlayers("xtpxt99xivVwU434Ucwf");
-        return players;
+    public Iterable<PlayerModel> getPlayers(String gameId) {
+        return  this.playerService.getGamePlayers(gameId);
     }
 
-    public Collection<GameModel> getGame() {
-        return this.gameRepository.getGame();
+    public GameModel getGame(String gameId) {
+        return this.gameRepository.getGame(gameId);
     }
 }
