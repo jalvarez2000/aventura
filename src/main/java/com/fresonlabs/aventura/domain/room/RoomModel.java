@@ -1,4 +1,4 @@
-package com.fresonlabs.aventura.domain.location;
+package com.fresonlabs.aventura.domain.room;
 
 import com.google.cloud.datastore.Key;
 import com.google.cloud.spring.data.datastore.core.mapping.Entity;
@@ -6,10 +6,13 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
-@Entity(name="locations")
-public class LocationModel {
-    @Id
-    Key id;
-    String description;
-    String name;
+@Entity(name = "rooms")
+public class RoomModel {
+
+  @Id
+  Key id;
+
+  String description;
+
+  String name;
 }

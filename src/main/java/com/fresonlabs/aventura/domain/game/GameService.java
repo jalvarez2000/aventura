@@ -1,37 +1,45 @@
 package com.fresonlabs.aventura.domain.game;
 
-import com.fresonlabs.aventura.domain.player.PlayerModel;
-import com.fresonlabs.aventura.domain.player.PlayerService;
-import com.google.cloud.datastore.Key;
-import com.google.cloud.spring.data.datastore.core.mapping.Entity;
-import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.Optional;
 
+import com.fresonlabs.aventura.domain.player.PlayerModel;
+import com.fresonlabs.aventura.domain.player.PlayerService;
+import com.google.cloud.datastore.Key;
+import org.springframework.stereotype.Component;
+
 @Component
-@Entity(name="games")
 public class GameService {
-    private GameRepository gameRepository;
-    private PlayerService playerService;
 
-    GameService(GameRepository gameRepository, PlayerService playerService) {
-        this.gameRepository = gameRepository;
-        this.playerService = playerService;
-    }
+  private final GameRepository gameRepository;
 
-    public Optional<GameModel> getGame(Key gameId) {
-        return this.gameRepository.findById(gameId.toString());
-    }
+  private final PlayerService playerService;
 
-    public Collection<GameModel> getAllGames() {
-        return this.gameRepository.getAllGames();
-    }
+  GameService(GameRepository gameRepository, PlayerService playerService) {
+    this.gameRepository = gameRepository;
+    this.playerService = playerService;
+  }
 
-    public Iterable<PlayerModel> getPlayers(String gameId) {
-        return  this.playerService.getGamePlayers(gameId);
-    }
+  public Optional<GameModel> getGame(Key gameId) {
+    return null;
+  }
 
-    public GameModel getGame(String gameId) {
-        return this.gameRepository.getGame(gameId);
-    }
+  public Collection<GameModel> getAllGames() {
+    // return this.gameRepository.getAllGames();
+    return null;
+  }
+
+  public Iterable<PlayerModel> getPlayers(String gameId) {
+    // return this.playerService.getGamePlayers(gameId);
+    return null;
+  }
+
+  public Optional<GameModel> getGame(String gameId) {
+    return this.gameRepository.findById(gameId);
+  }
+
+  public Boolean hasPlayer(String gameId, String playerId) {
+    // return this.gameRepository.hasPlayer(gameId, playerId) != null;
+    return null;
+  }
 }

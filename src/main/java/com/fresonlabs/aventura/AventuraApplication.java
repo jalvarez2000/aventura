@@ -16,20 +16,24 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @ConfigurationPropertiesScan("com.fresonlabs.aventura.config")
 public class AventuraApplication {
 
+  // TODO: Revisar todos los gameId para que no esten hardcodeados
+  // TODO: Refactorizar los comandos por design patter mas adecuado
+  // TODO: Implementar casos de test
+  // TODO: Revisar los nombres y la organzacvion de Gamerequest. Mucho por mejorar
 
-	public static void main(String[] args) throws IOException {
-		ClassLoader classLoader = AventuraApplication.class.getClassLoader();
-		File file = new File(Objects.requireNonNull(classLoader.getResource("serviceAccount.json")).getFile());
+  public static void main(String[] args) throws IOException {
+    ClassLoader classLoader = AventuraApplication.class.getClassLoader();
+    File file = new File(Objects.requireNonNull(classLoader.getResource("serviceAccount.json")).getFile());
 
-		FileInputStream serviceAccount =
-				new FileInputStream(file.getAbsolutePath());
+    FileInputStream serviceAccount =
+        new FileInputStream(file.getAbsolutePath());
 
-		FirebaseOptions options = new FirebaseOptions.Builder()
-				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-				.build();
+    FirebaseOptions options = new FirebaseOptions.Builder()
+        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+        .build();
 
-		FirebaseApp.initializeApp(options);
-		SpringApplication.run(AventuraApplication.class, args);
-	}
+    FirebaseApp.initializeApp(options);
+    SpringApplication.run(AventuraApplication.class, args);
+  }
 
 }

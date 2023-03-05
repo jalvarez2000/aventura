@@ -4,3 +4,9 @@ spring:
       project-id: aventura-db
       credentials:
         location: classpath:aventura-db-eacbf8e020bc.json
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com
+          issuer-uri: https://securetoken.google.com/aventura-db

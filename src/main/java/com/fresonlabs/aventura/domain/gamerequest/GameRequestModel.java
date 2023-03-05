@@ -4,11 +4,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
-@Jacksonized @Builder
+@Jacksonized
+@Builder
 @Data
-public class  GameRequestModel {
-    String playerId;
-    String gameId;
-    GameCommandModel gameCommand;
+public class GameRequestModel {
+
+  String gameId;
+
+  GameCommandModel gameCommand;
+
+  GameInteractionModel gameInteraction;
 }
 

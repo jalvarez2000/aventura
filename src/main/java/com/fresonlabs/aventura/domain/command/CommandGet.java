@@ -9,12 +9,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class CommandGet extends Command {
-    CommandGet(GameService gameService) {
-        super(gameService);
-    }
 
-    @EventListener(condition = "#gameRequest.getGameCommand().getVerb().equals('coger')")
-    public void handleGameRequest(GameRequestModel gameRequest) {
-        log.info("Solicitud de coger pedida");
-    }
+  CommandGet(GameService gameService) {
+    super(gameService);
+  }
+
+  @EventListener(condition = "#gameRequest.getGameCommand().getVerb().equals('coger')")
+  public void handleGameRequest(GameRequestModel gameRequest) {
+    log.info("Solicitud de coger pedida");
+  }
 }

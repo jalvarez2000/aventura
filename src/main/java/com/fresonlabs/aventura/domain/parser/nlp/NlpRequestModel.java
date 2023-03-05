@@ -4,9 +4,10 @@ import lombok.Data;
 
 @Data
 public class NlpRequestModel {
-    String gameId;
-    String playerId;
-    String inputText;
+
+  String gameId;
+
+  String inputText;
 }
 
 
