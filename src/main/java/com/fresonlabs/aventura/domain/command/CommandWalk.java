@@ -1,8 +1,13 @@
 package com.fresonlabs.aventura.domain.command;
 
+import java.util.Map;
+import java.util.Optional;
+
 import com.fresonlabs.aventura.domain.game.GameService;
-import com.fresonlabs.aventura.domain.gamerequest.GameInteractionService;
 import com.fresonlabs.aventura.domain.gamerequest.GameRequestModel;
+import com.fresonlabs.aventura.domain.player.PlayerModel;
+import com.fresonlabs.aventura.domain.player.PlayerRepository;
+import com.fresonlabs.aventura.domain.room.RoomModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -11,15 +16,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommandWalk extends Command {
 
-  private final GameInteractionService gameInteractionService;
-
-  CommandWalk(GameService gameService, GameInteractionService gameInteractionService) {
-    super(gameService);
-    this.gameInteractionService = gameInteractionService;
+  CommandWalk(GameService gameService, CommandLogger commandLogger, PlayerRepository playerRepository) {
+    super(gameService, commandLogger, playerRepository);
   }
 
-  @EventListener(condition = "#gameRequest.getGameCommand().getVerb().equals('mover')")
-  public void handleGameRequest(GameRequestModel gameRequest) {
-    this.gameInteractionService.updateGameInteraction(gameRequest.getGameInteraction(), gameRequest.getGameId(), this.getUid());
+  @Override
+  @EventListener(condition = "#gameRequest.getParsedCommand().getVerb().equals('mover')")
+  public void execute(GameRequestModel gameRequest) {
+    Optional<PlayerModel> currentPlayer = this.gameService.getPlayer(gameRequest.getGameId(), this.getUid());
+
+    currentPlayer.ifPresent(player -> {
+      Optional<RoomModel> currentRoom = this.gameService.getPlayerRoom(currentPlayer.get());
+      currentRoom.ifPresent(room -> {
+        Map<String, String> exits = currentRoom.get().getExits();
+        String direction = gameRequest.getParsedCommand().getNoun();
+
+        if (exits.get(direction) != null) {
+          player.setRoomId(exits.get(direction));
+          this.log(player, "");
+        } else {
+          this.log(player, gameRequest.getOriginalCommand() + " > " + "No puedes ir ahi");
+        }
+      });
+    });
   }
 }

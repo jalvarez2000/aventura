@@ -17,6 +17,8 @@ public class GameModel {
   @Id
   Key id;
 
+  String description;
+
   @Descendants
   List<RoomModel> rooms;
 

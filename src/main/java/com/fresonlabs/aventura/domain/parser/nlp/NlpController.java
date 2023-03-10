@@ -3,7 +3,6 @@ package com.fresonlabs.aventura.domain.parser.nlp;
 import java.util.List;
 
 import com.fresonlabs.aventura.domain.gamerequest.GameCommandModel;
-import com.fresonlabs.aventura.domain.gamerequest.GameInteractionModel;
 import com.fresonlabs.aventura.domain.gamerequest.GameRequestModel;
 import com.fresonlabs.aventura.domain.parser.lemma.LemmaService;
 import edu.stanford.nlp.ling.CoreLabel;
@@ -33,7 +32,7 @@ public class NlpController {
     this.lemmaService = lemmaService;
     this.publisher = publisher;
   }
-  
+
   @PostMapping("process")
   @ResponseBody
   public void process(@RequestBody NlpRequestModel nlpText) throws Exception {
@@ -47,15 +46,10 @@ public class NlpController {
           .verb(this.getCommandItem(tokens, "VERB"))
           .build();
 
-      GameInteractionModel gameInteraction = GameInteractionModel.builder()
-          .request(nlpText.getInputText())
-          .response(null)
-          .build();
-
       GameRequestModel gameAppRequest = GameRequestModel.builder()
           .gameId(nlpText.gameId)
-          .gameCommand(gameCommand)
-          .gameInteraction(gameInteraction)
+          .parsedCommand(gameCommand)
+          .originalCommand(nlpText.getInputText())
           .build();
 
       if (!gameCommand.getVerb().isEmpty() && !gameCommand.getNoun().isEmpty()) {

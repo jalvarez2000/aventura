@@ -11,8 +11,8 @@ public class GameRequestModel {
 
   String gameId;
 
-  GameCommandModel gameCommand;
+  GameCommandModel parsedCommand;
 
-  GameInteractionModel gameInteraction;
+  String originalCommand;
 }
 

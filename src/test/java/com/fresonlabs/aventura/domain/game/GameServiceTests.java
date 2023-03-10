@@ -1,6 +1,5 @@
 package com.fresonlabs.aventura.domain.game;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
@@ -10,6 +9,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import com.fresonlabs.aventura.AventuraApplication;
+import com.fresonlabs.aventura.domain.player.PlayerModel;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -18,13 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GameRepositoryTests {
+public class GameServiceTests {
 
   @Autowired
-  GameRepository gameRepository;
+  GameService gameService;
 
-  GameRepositoryTests() throws IOException {
-    System.out.println("Setting up");
+  GameServiceTests() throws IOException {
     ClassLoader classLoader = AventuraApplication.class.getClassLoader();
     File file = new File(Objects.requireNonNull(classLoader.getResource("serviceAccount.json")).getFile());
 
@@ -39,16 +38,9 @@ class GameRepositoryTests {
   }
 
   @Test
-  void getExistingGameTest() {
-    final String gameId = "6VgFHH0eftew5fVtqPQx";
-    Optional<GameModel> game = gameRepository.findById(gameId);
-    assertTrue(game.isPresent());
+  public void test() {
+    Optional<PlayerModel> player = gameService.getPlayer("6VgFHH0eftew5fVtqPQx", "vMuh9DemJcOSTInDF9V2IFWQVyy2");
+    assertTrue(player.isPresent());
   }
 
-  @Test
-  void getNonExistingGameTest() {
-    final String gameId = "nonexisting";
-    Optional<GameModel> game = gameRepository.findById(gameId);
-    assertFalse(game.isPresent());
-  }
 }

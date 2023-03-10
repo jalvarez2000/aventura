@@ -1,5 +1,7 @@
 package com.fresonlabs.aventura.domain.room;
 
+import java.util.Map;
+
 import com.google.cloud.datastore.Key;
 import com.google.cloud.spring.data.datastore.core.mapping.Entity;
 import lombok.Data;
@@ -15,4 +17,6 @@ public class RoomModel {
   String description;
 
   String name;
+
+  Map<String, String> exits;
 }

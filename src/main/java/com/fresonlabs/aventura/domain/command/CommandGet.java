@@ -2,6 +2,7 @@ package com.fresonlabs.aventura.domain.command;
 
 import com.fresonlabs.aventura.domain.game.GameService;
 import com.fresonlabs.aventura.domain.gamerequest.GameRequestModel;
+import com.fresonlabs.aventura.domain.player.PlayerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -10,12 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommandGet extends Command {
 
-  CommandGet(GameService gameService) {
-    super(gameService);
+  CommandGet(GameService gameService, CommandLogger commandLogger, PlayerRepository playerRepository) {
+    super(gameService, commandLogger, playerRepository);
   }
 
-  @EventListener(condition = "#gameRequest.getGameCommand().getVerb().equals('coger')")
-  public void handleGameRequest(GameRequestModel gameRequest) {
+  @Override
+  @EventListener(condition = "#gameRequest.getParsedCommand().getVerb().equals('coger')")
+  public void execute(GameRequestModel gameRequest) {
     log.info("Solicitud de coger pedida");
   }
 }

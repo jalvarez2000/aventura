@@ -1,5 +1,6 @@
 package com.fresonlabs.aventura.domain.player;
 
+import com.google.cloud.datastore.Key;
 import com.google.cloud.spring.data.datastore.core.mapping.Entity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -9,7 +10,11 @@ import org.springframework.data.annotation.Id;
 public class PlayerModel {
 
   @Id
-  String id;
+  Key id;
 
   String name;
+
+  String commandLogger;
+
+  String roomId;
 }
